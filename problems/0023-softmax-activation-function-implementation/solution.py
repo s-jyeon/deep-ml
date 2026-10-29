@@ -1,14 +1,10 @@
 import math
 import numpy as np
 def softmax(scores: list[float]) -> list[float]:
-    max_score = max(scores)
-    softmax = []
+    score_arr = np.array(scores)
+    exp_score = np.exp(score_arr-np.max(score_arr))
 
-    for score in scores:
-        res = np.exp(score-max_score) / sum(np.exp(score-max_score)for score in scores)
-        softmax.append(res)
-
-    return softmax
+    return exp_score/sum(exp_score)
 
   
 
